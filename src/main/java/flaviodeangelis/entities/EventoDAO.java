@@ -59,5 +59,11 @@ public class EventoDAO {
         partite.forEach(squadracasa -> getCasaVince.setParameter("squadracasa", squadracasa.getSquadraDiCasa()));
         return getCasaVince.getResultList();
     }
+
+    public List<PartitaDiCalcio> getPartiteVinteInTrasferta(List<PartitaDiCalcio> partite) {
+        TypedQuery<PartitaDiCalcio> getCasaVince = em.createNamedQuery("Evento.getPartiteVinteInTrasferta", PartitaDiCalcio.class);
+        partite.forEach(squadracasa -> getCasaVince.setParameter("squadratrasferta", squadracasa.getSquadraOspite()));
+        return getCasaVince.getResultList();
+    }
 }
 

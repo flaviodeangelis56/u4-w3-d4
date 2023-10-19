@@ -47,8 +47,11 @@ public class Application {
             partite.add(partita1);
             partite.add(partita2);
             partite.add(partita3);
-            List<PartitaDiCalcio> casaVince = eDAO.getPartiteVinteInCasa(partite);
-            casaVince.forEach(System.out::println);
+            //List<PartitaDiCalcio> casaVince = eDAO.getPartiteVinteInCasa(partite);
+            //casaVince.forEach(System.out::println);
+            //---------------------------------- getPartiteVinteInTrasferta----------------------------------
+            List<PartitaDiCalcio> trasfertaVince = eDAO.getPartiteVinteInTrasferta(partite);
+            trasfertaVince.forEach(System.out::println);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         } finally {
