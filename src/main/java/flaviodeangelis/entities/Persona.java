@@ -3,6 +3,7 @@ package flaviodeangelis.entities;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "persone")
@@ -18,11 +19,13 @@ public class Persona {
     Genere sesso;
     @OneToMany(mappedBy = "persona")
     List<Partecipazione> ListaPartecipazioni;
-    @ManyToOne
-    @JoinColumn(name = "gara_id")
-    GaraDiAtletica garaDiAtletica;
-    @OneToOne(mappedBy = "vincitore")
-    GaraDiAtletica vincitore;
+    @ManyToMany
+    @JoinTable(name = "gara_persona",
+            joinColumns = @JoinColumn(name = "persona_id"),
+            inverseJoinColumns = @JoinColumn(name = "gara_id"))
+    Set<GaraDiAtletica> garaDiAtletica;
+    @OneToMany(mappedBy = "vincitore")
+    Set<GaraDiAtletica> vincitore;
 
     public Persona() {
     }

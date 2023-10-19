@@ -12,7 +12,8 @@ import java.util.Set;
 @DiscriminatorColumn(name = "tipo_evento")
 @NamedQueries({
         @NamedQuery(name = "Evento.getPartiteVinteInCasa", query = "SELECT p FROM PartitaDiCalcio p WHERE squadraVincente = :squadracasa"),
-        @NamedQuery(name = "Evento.getPartiteVinteInTrasferta", query = "SELECT p FROM PartitaDiCalcio p WHERE squadraVincente = :squadratrasferta")
+        @NamedQuery(name = "Evento.getPartiteVinteInTrasferta", query = "SELECT p FROM PartitaDiCalcio p WHERE squadraVincente = :squadratrasferta"),
+        @NamedQuery(name = "Evento.getPartitePareggiate", query = "SELECT p FROM PartitaDiCalcio p WHERE squadraVincente IS NULL")
 })
 public abstract class Evento {
 

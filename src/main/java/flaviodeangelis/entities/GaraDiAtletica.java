@@ -4,18 +4,21 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class GaraDiAtletica extends Evento{
-@OneToMany(mappedBy = "garaDiAtletica")
+public class GaraDiAtletica extends Evento {
+    @ManyToMany
+    @JoinTable(name = "gara_persona",
+            joinColumns = @JoinColumn(name = "gara_id"),
+            inverseJoinColumns = @JoinColumn(name = "persona_id"))
     Set<Persona> atleti;
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "persona_id", nullable = false)
     Persona vincitore;
 
-    public GaraDiAtletica () {
+    public GaraDiAtletica() {
 
     }
 
-    public GaraDiAtletica(String titolo, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, Set<Persona> atleti,Persona vincitore) {
+    public GaraDiAtletica(String titolo, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, Set<Persona> atleti, Persona vincitore) {
         super(titolo, descrizione, tipoEvento, numeroMassimoPartecipanti, location);
         this.atleti = atleti;
         this.vincitore = vincitore;
