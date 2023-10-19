@@ -47,5 +47,17 @@ public class EventoDAO {
         getConcertiStreaming.setParameter("streaming", streaming);
         return getConcertiStreaming.getResultList();
     }
+
+    public List<Concerto> getConcertiPerGenere(GenereConcerto genere) {
+        TypedQuery<Concerto> getConcertiGenere = em.createQuery("SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
+        getConcertiGenere.setParameter("genere", genere);
+        return getConcertiGenere.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInCasa(List<PartitaDiCalcio> partite) {
+        TypedQuery<PartitaDiCalcio> getCasaVince = em.createNamedQuery("Evento.getPartiteVinteInCasa", PartitaDiCalcio.class);
+        partite.forEach(squadracasa -> getCasaVince.setParameter("squadracasa", squadracasa.getSquadraDiCasa()));
+        return getCasaVince.getResultList();
+    }
 }
 

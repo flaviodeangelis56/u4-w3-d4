@@ -4,6 +4,7 @@ import flaviodeangelis.entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,26 +28,27 @@ public class Application {
             //lDAO.save(olimpico);
             Location l = lDAO.getById(19);
             Persona flavio = new Persona("flavio", "deangelis", "email@gmail.com", flavioDate, Genere.M);
-            Concerto concerto2 = new Concerto("concerto2", "descrizione concerto2", TipoEvento.PRIVATO, 10, l, GenereConcerto.CLASSICO, false);
-
-            //  eDAO.save(concerto2);
-            List<Concerto> concertiStreaming = eDAO.getConcertiInStreaming(false);
-            concertiStreaming.forEach(System.out::println);
-            // Evento e = eDAO.getById(10);
-            //  Persona p = persDAO.getById(12);
-            //lDAO.save(olimpico);
-            // Evento test = new Evento("testOlimpico", "description of test1", TipoEvento.PRIVATO, 5, l);
-            //  if (l != null) {
-            //     Partecipazione test = new Partecipazione("flavio", "testOlimpico", StatoPartecipazione.CONFERMATA, e, p);
-            // eDAO.save(test);
-            //pDAO.save(test);
-            // } else {
-            //     System.out.println("location non trovata");
-            //   }
-
-            //  p.getListaPartecipazioni().forEach(partecipazione -> System.out.println(partecipazione));
+            Concerto concerto6 = new Concerto("concerto6", "descrizione concerto6", TipoEvento.PRIVATO, 10, l, GenereConcerto.CLASSICO, true);
+            //PartitaDiCalcio partita3 = new PartitaDiCalcio("Partita3", "descrizione partita3", TipoEvento.PUBBLICO, 2000, l, "roma", "lazio", 1, 2);
+            //eDAO.save(partita3);
 
 
+            //----------------------------------getConcertiInStreaming----------------------------------
+            //List<Concerto> concertiStreaming = eDAO.getConcertiInStreaming(false);
+            //concertiStreaming.forEach(System.out::println);
+            //----------------------------------getConcertiPerGenere----------------------------------
+            // List<Concerto> concertiGenere = eDAO.getConcertiPerGenere(GenereConcerto.POP);
+            // concertiGenere.forEach(System.out::println);
+            //----------------------------------getPartiteVinteInCasa----------------------------------
+            PartitaDiCalcio partita1 = (PartitaDiCalcio) eDAO.getById(30);
+            PartitaDiCalcio partita2 = (PartitaDiCalcio) eDAO.getById(31);
+            PartitaDiCalcio partita3 = (PartitaDiCalcio) eDAO.getById(32);
+            List<PartitaDiCalcio> partite = new ArrayList<>();
+            partite.add(partita1);
+            partite.add(partita2);
+            partite.add(partita3);
+            List<PartitaDiCalcio> casaVince = eDAO.getPartiteVinteInCasa(partite);
+            casaVince.forEach(System.out::println);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         } finally {

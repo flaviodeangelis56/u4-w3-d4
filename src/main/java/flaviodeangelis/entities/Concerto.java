@@ -1,17 +1,20 @@
 package flaviodeangelis.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class Concerto extends Evento {
-GenereConcerto genere;
-Boolean inStreaming ;
+    @Enumerated(EnumType.STRING)
+    GenereConcerto genere;
+    Boolean inStreaming;
 
-public Concerto() {
+    public Concerto() {
 
-}
+    }
 
-    public Concerto(String titolo, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, GenereConcerto genere,Boolean inStreaming) {
+    public Concerto(String titolo, String descrizione, TipoEvento tipoEvento, int numeroMassimoPartecipanti, Location location, GenereConcerto genere, Boolean inStreaming) {
         super(titolo, descrizione, tipoEvento, numeroMassimoPartecipanti, location);
         this.genere = genere;
         this.inStreaming = inStreaming;

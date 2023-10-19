@@ -10,6 +10,9 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "eventi")
 @DiscriminatorColumn(name = "tipo_evento")
+@NamedQueries({
+        @NamedQuery(name = "Evento.getPartiteVinteInCasa", query = "SELECT p FROM PartitaDiCalcio p WHERE squadraVincente = :squadracasa")
+})
 public abstract class Evento {
 
 
