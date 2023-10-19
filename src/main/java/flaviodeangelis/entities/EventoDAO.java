@@ -71,5 +71,11 @@ public class EventoDAO {
         // getPareggio.setParameter("null", null);
         return getPareggio.getResultList();
     }
+
+    public List<GaraDiAtletica> getGareDiAtleticaPerVincitore(long id) {
+        TypedQuery<GaraDiAtletica> gareVinte = em.createQuery("SELECT g FROM GaraDiAtletica g WHERE persona_id = :persona_id", GaraDiAtletica.class);
+        gareVinte.setParameter("persona_id", id);
+        return gareVinte.getResultList();
+    }
 }
 

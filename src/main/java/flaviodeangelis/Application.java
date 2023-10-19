@@ -64,6 +64,9 @@ public class Application {
             //---------------------------------- getPartitePareggiate----------------------------------
             // List<PartitaDiCalcio> pareggio = eDAO.getPartitePareggiate();
             // pareggio.forEach(System.out::println);
+            //---------------------------------- getGareDiAtleticaPerVincitore----------------------------------
+            List<GaraDiAtletica> gareVinte = eDAO.getGareDiAtleticaPerVincitore(p1.getId());
+            gareVinte.forEach(System.out::println);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         } finally {
